@@ -1,3 +1,4 @@
+import React from "react";
 import "./styles.css";
 import { Component } from "react";
 import { loadPosts } from "../../utils/load-posts";
@@ -47,7 +48,7 @@ export class Home extends Component {
   render() {
     const { posts, page, postsPerPage, allPosts, searchValue } = this.state;
     const noMorePosts = page + postsPerPage >= allPosts.length;
-    const filteredPosts = !!searchValue
+    const filteredPosts = (searchValue)
       ? allPosts.filter((p) => {
           return p.title.toLowerCase().includes(searchValue.toLowerCase());
         })
@@ -61,10 +62,10 @@ export class Home extends Component {
             onChange={this.handleChange}
             searchValue={searchValue}
           ></TextInput>
-        
+
         </div>
 
-      
+
         {filteredPosts.length > 0 && <Posts posts={filteredPosts} />}
 
         {filteredPosts.length === 0 && <h3>Nenhum post encontrado</h3>}
